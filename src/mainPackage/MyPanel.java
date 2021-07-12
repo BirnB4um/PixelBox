@@ -19,10 +19,10 @@ import javax.swing.JPanel;
 public class MyPanel extends JPanel {
 	// info/credits
 	private final String version = "1.2";
-	private final String author = "BirnBaum";
-	private final String programmer = "BirnBaum";
-	private final String graphicDesigner = "BirnBaum";
-	private final String soundArtist = "Pieuvree";
+	private final String author = "Thimo Thorandt";
+	private final String programmer = "Thimo Thorandt";
+	private final String graphicDesigner = "Thimo Thorandt";
+	private final String soundArtist = "Joe der krasse";
 
 	// ?
 	private static final long serialVersionUID = 1L;

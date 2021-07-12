@@ -5,6 +5,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.ImageObserver;
 
 public class AuswahlPixel extends Pixel {
 
@@ -123,7 +124,7 @@ public class AuswahlPixel extends Pixel {
 		int H = 20;
 		int anzahlImgWInSprite = (int) (imgW / W);
 		int anzahlImgHInSprite = (int) (imgH / H);
-		anzahlImgHInSprite = anzahlImgHInSprite + 1 - 1;// nur um warnung wegzumachen
+		//anzahlImgHInSprite = anzahlImgHInSprite + 1 - 1;// nur um warnung wegzumachen
 
 		int dx = 0;
 		int dy = 0;
