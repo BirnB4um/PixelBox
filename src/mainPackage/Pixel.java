@@ -32,6 +32,7 @@ public class Pixel {
 	public int dir;// 0,1,2 | 3,4,5 | 6,7,8
 	public int otherPixelListIndex;
 	public int fallDamage;
+	public int transmissionData;
 
 	public Pixel(int _x, int _y, MyPanel panel, String name) {
 		this.panel = panel;
@@ -60,6 +61,7 @@ public class Pixel {
 		repeaterValue = 1;
 		otherPixelListIndex = 0;
 		fallDamage = 0;
+		transmissionData = 0;
 
 		if (name == "Coming Soon") {
 			density = 0;
@@ -394,6 +396,25 @@ public class Pixel {
 			if (startwerte) {
 				lifecount = panel.gravitychanger_lifecount;
 			}
+		} else if (name == "Lead") {
+			conductor = true;
+			density = 14;
+			color = new Color(85, 90, 85);
+			if (startwerte) {
+				lifecount = panel.lead_lifecount;
+			}
+		} else if (name == "Transmitter") {
+			density = 14;
+			color = new Color(255, 100, 170);
+			if (startwerte) {
+				lifecount = panel.transmitter_lifecount;
+			}
+		} else if (name == "Receiver") {
+			density = 14;
+			color = new Color(90, 80, 255);
+			if (startwerte) {
+				lifecount = panel.receiver_lifecount;
+			}
 		}
 	}
 
@@ -574,6 +595,11 @@ public class Pixel {
 
 		g2D.fillRect(posX, posY, panel.pixelWidth * panel.zoomFactor, panel.pixelHeight * panel.zoomFactor);
 
+		if (transmissionData > 0) {
+			int a = panel.constrain((long) (255 * ((float) transmissionData / panel.maxTransmissionData)), 0, 255);
+			g2D.setColor(new Color(a, a, a, a));
+			g2D.fillRect(posX, posY, panel.pixelWidth * panel.zoomFactor, panel.pixelHeight * panel.zoomFactor);
+		}
 	}
 
 	void switchPixels(int i, int nachbarPixelIndex) {
@@ -593,7 +619,7 @@ public class Pixel {
 	public int[] getIndividualData() {
 		int[] data = { lifecount, gravity ? 1 : 0, fallUp ? 1 : 0, slide ? 1 : 0, flow ? 1 : 0, dir, density,
 				flammable ? 1 : 0, onFire ? 1 : 0, warm ? 1 : 0, electricityStatus, otherPixelListIndex, repeaterValue,
-				fallDamage, explodable ? 1 : 0, conductor ? 1 : 0 };
+				fallDamage, explodable ? 1 : 0, conductor ? 1 : 0, transmissionData };
 		return data;
 	}
 
@@ -614,6 +640,7 @@ public class Pixel {
 		fallDamage = data[13];
 		explodable = data[14] == 1;
 		conductor = data[15] == 1;
+		transmissionData = data[16];
 	}
 
 	void setAngrenzenderNachbar(int i, String name, String ausnahme) {
@@ -1166,6 +1193,13 @@ public class Pixel {
 
 	public void update(int i) {
 
+		// transmission
+		if(transmissionData > 1) {
+//			if(getIndexOfNachbar(i, 1) >= 0 && panel.pixelArray[i - panel.anzahlPixelWidth].transmissionData) {
+//				
+//			}
+		}
+
 		// if air -> skip
 		if (name == "Air") {
 			otherPixelListIndex = 0;
@@ -1183,9 +1217,7 @@ public class Pixel {
 					if (index == -1)
 						return;
 					if (panel.soundCountForEachBlock[index] + 1 <= panel.maxSoundCountForEachBlock[index]) {
-						Sound s = new Sound("/sounds/Lufter.wav", 0.72f, index);
-						s.play();
-						panel.runningSound.add(s);
+						panel.playSound("Lufter.wav", 0.72f, index);
 						panel.soundCountForEachBlock[index] += 1;
 					}
 

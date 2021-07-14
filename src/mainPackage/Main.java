@@ -19,6 +19,10 @@ import Listeners.mouseWheelListener;
 
 public class Main {
 
+	/*
+	 * Sorry for messy/inconsistent code. This is my first game made in Java. Hope you like it :)
+	 */
+
 	static MyPanel panel;
 	static JFrame jf;
 	static JFrame fjf;
@@ -34,7 +38,6 @@ public class Main {
 
 	public static void playSound(String filepath) {
 
-		// String filepath = "res/song.wav";
 		try {
 			File musicPath = new File(filepath);
 			if (musicPath.exists()) {

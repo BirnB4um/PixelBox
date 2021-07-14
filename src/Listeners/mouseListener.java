@@ -372,8 +372,6 @@ public class mouseListener implements MouseListener {
 					}
 
 				}
-//				panel.removeNewestStepsFromHistoryList();
-//				panel.addOneHistoryList = true;
 
 			} else // ausgewählter Pixel
 			if (panel.auswahlPixelBox.mouseOverPixel(panel.mouseX, panel.mouseY)) {

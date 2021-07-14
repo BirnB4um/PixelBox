@@ -5,7 +5,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.image.ImageObserver;
 
 public class AuswahlPixel extends Pixel {
 
@@ -119,12 +118,11 @@ public class AuswahlPixel extends Pixel {
 		Image img = panel.sprite;
 
 		int imgW = img.getWidth(null);
-		int imgH = img.getHeight(null);
+//		int imgH = img.getHeight(null);
 		int W = 20;
 		int H = 20;
 		int anzahlImgWInSprite = (int) (imgW / W);
-		int anzahlImgHInSprite = (int) (imgH / H);
-		//anzahlImgHInSprite = anzahlImgHInSprite + 1 - 1;// nur um warnung wegzumachen
+//		int anzahlImgHInSprite = (int) (imgH / H);
 
 		int dx = 0;
 		int dy = 0;
@@ -219,11 +217,11 @@ public class AuswahlPixel extends Pixel {
 		// === new line ==
 		else if (name == "Blood") {
 			index = 40;
-		} else if (name == "") {
+		} else if (name == "Lead") {
 			index = 41;
-		} else if (name == "") {
+		} else if (name == "Transmitter") {
 			index = 42;
-		} else if (name == "") {
+		} else if (name == "Receiver") {
 			index = 43;
 		} else if (name == "") {
 			index = 44;
@@ -846,8 +844,8 @@ public class AuswahlPixel extends Pixel {
 		} else if (name == "Cloner") {
 			wX = (int) panel.mouseX + dx;
 			wY = (int) panel.mouseY + dx;
-			wW = 210;
-			wH = 100;
+			wW = 250;
+			wH = 140;
 
 			if (wX + wW >= panel.width) {
 				wX -= 2 * dx + wW;
@@ -864,7 +862,8 @@ public class AuswahlPixel extends Pixel {
 
 			g2D.setFont(panel.myFontLittle);
 			g2D.setColor(Color.white);
-			g2D.drawString("set first touched block", wX + 15, wY + infoDy);
+			g2D.drawString("-set first touched block", wX + 15, wY + infoDy);
+			g2D.drawString("-can be activated", wX + 15, wY + infoDy + 30);
 
 		} else if (name == "Ice") {
 			wX = (int) panel.mouseX + dx;
@@ -1008,7 +1007,7 @@ public class AuswahlPixel extends Pixel {
 			wX = (int) panel.mouseX + dx;
 			wY = (int) panel.mouseY + dx;
 			wW = 270;
-			wH = 100;
+			wH = 140;
 
 			if (wX + wW >= panel.width) {
 				wX -= 2 * dx + wW;
@@ -1026,6 +1025,7 @@ public class AuswahlPixel extends Pixel {
 			g2D.setFont(panel.myFontLittle);
 			g2D.setColor(Color.white);
 			g2D.drawString("Delay can be changed", wX + 15, wY + infoDy);
+			g2D.drawString("in Info-menu", wX + 15, wY + infoDy+30);
 
 		} else if (name == "Barrier") {
 			wX = (int) panel.mouseX + dx;
@@ -1215,6 +1215,75 @@ public class AuswahlPixel extends Pixel {
 			wX = (int) panel.mouseX + dx;
 			wY = (int) panel.mouseY + dx;
 			wW = 200;
+			wH = 60;
+
+			if (wX + wW >= panel.width) {
+				wX -= 2 * dx + wW;
+			}
+
+			g2D.setColor(new Color(40, 40, 60));
+			g2D.fillRect(wX, wY, wW, wH);
+			g2D.setColor(new Color(90, 90, 130));
+			g2D.drawRect(wX, wY, wW, wH);
+
+			g2D.setFont(panel.myFont);
+			g2D.setColor(Color.white);
+			g2D.drawString(name, wX + 20, wY + 40);
+
+			g2D.setFont(panel.myFontLittle);
+			g2D.setColor(Color.white);
+			g2D.drawString("", wX + 15, wY + infoDy);
+
+		} else if (name == "Lead") {
+			wX = (int) panel.mouseX + dx;
+			wY = (int) panel.mouseY + dx;
+			wW = 160;
+			wH = 60;
+
+			if (wX + wW >= panel.width) {
+				wX -= 2 * dx + wW;
+			}
+
+			g2D.setColor(new Color(40, 40, 60));
+			g2D.fillRect(wX, wY, wW, wH);
+			g2D.setColor(new Color(90, 90, 130));
+			g2D.drawRect(wX, wY, wW, wH);
+
+			g2D.setFont(panel.myFont);
+			g2D.setColor(Color.white);
+			g2D.drawString(name, wX + 20, wY + 40);
+
+			g2D.setFont(panel.myFontLittle);
+			g2D.setColor(Color.white);
+			g2D.drawString("", wX + 15, wY + infoDy);
+
+		} else if (name == "Transmitter") {
+			wX = (int) panel.mouseX + dx;
+			wY = (int) panel.mouseY + dx;
+			wW = 370;
+			wH = 60;
+
+			if (wX + wW >= panel.width) {
+				wX -= 2 * dx + wW;
+			}
+
+			g2D.setColor(new Color(40, 40, 60));
+			g2D.fillRect(wX, wY, wW, wH);
+			g2D.setColor(new Color(90, 90, 130));
+			g2D.drawRect(wX, wY, wW, wH);
+
+			g2D.setFont(panel.myFont);
+			g2D.setColor(Color.white);
+			g2D.drawString(name, wX + 20, wY + 40);
+
+			g2D.setFont(panel.myFontLittle);
+			g2D.setColor(Color.white);
+			g2D.drawString("", wX + 15, wY + infoDy);
+
+		} else if (name == "Receiver") {
+			wX = (int) panel.mouseX + dx;
+			wY = (int) panel.mouseY + dx;
+			wW = 280;
 			wH = 60;
 
 			if (wX + wW >= panel.width) {

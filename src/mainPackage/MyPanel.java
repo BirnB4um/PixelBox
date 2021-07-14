@@ -117,10 +117,14 @@ public class MyPanel extends JPanel {
 	public int uran_lifecount = 16;
 	public int napalm_lifecount = 16;
 	public int gravitychanger_lifecount = 16;
+	public int lead_lifecount = 15;
+	public int transmitter_lifecount = 15;
+	public int receiver_lifecount = 15;
 
 	public int tnt_sprengradius;
 	public int acid_chance_to_remove = 70;
 
+	public int maxTransmissionData = 30;
 	public float mutationChance = 0.5f;
 
 	// other stuff
@@ -269,7 +273,8 @@ public class MyPanel extends JPanel {
 	public String listOfAllItems[] = { "Air", "Dirt", "Sand", "Water", "Lava", "Fire", "Steam", "Wood", "Cloud",
 			"Smoke", "Stone", "Oil", "Fuse", "Leaf", "Gas", "TNT", "Bird", "Acid", "Glass", "Ash", "Bee", "Wax",
 			"Metal", "Spark", "Cloner", "Ice", "Nitro", "Salt", "Saltwater", "Lufter", "Battery", "Grass", "Repeater",
-			"Barrier", "Fish", "Pig", "Cweeper", "Uran", "Napalm", "Gravitychanger", "Blood" };
+			"Barrier", "Fish", "Pig", "Cweeper", "Uran", "Napalm", "Gravitychanger", "Blood", "Lead", "Transmitter",
+			"Receiver" };
 	public AuswahlPixel[] categoryPixels;
 	public int showWhichCategoryItems = -1; // 0:Gas 1:liquid 2:solid 3:technic 4:animals
 	public String[] allCategories = { "gas", "liquid", "solid", "technic", "animals" };
@@ -313,22 +318,20 @@ public class MyPanel extends JPanel {
 
 	/*
 	 * =============================================================================
-	 * =================
 	 * =============================================================================
-	 * =================
 	 * =============================================================================
-	 * =================
 	 */
 
 	// Konstruktor
 	public MyPanel(JFrame jf, int _width, int _height, int anzahlPixelWidth, boolean fullscreen) {
 
+		System.out.println();
 		System.out.println("Version: " + version);
 		System.out.println("Author: " + author);
-		System.out.println("  --------------------");
 		System.out.println("Programmer: " + programmer);
 		System.out.println("Graphic designer: " + graphicDesigner);
 		System.out.println("Sound artist: " + soundArtist);
+		System.out.println();
 
 		this.jf = jf;
 		this.fullscreen = fullscreen;
@@ -484,7 +487,7 @@ public class MyPanel extends JPanel {
 				maxMemMB = 160;
 			}
 		}
-		System.out.println(maxMemMB + " MB RAM allowed");
+		//System.out.println(maxMemMB + " MB RAM allowed");
 
 		copyMode = false;
 		copyStartpoint = null;
@@ -997,6 +1000,8 @@ public class MyPanel extends JPanel {
 	}
 
 	public void addOneHistoryList() {
+		if (historyPixelList.size() >= maxHistorySize)
+			return;
 		Pixel[] undoList = new Pixel[pixelArray.length];
 		for (int i = 0; i < pixelArray.length; i++) {
 			undoList[i] = new Pixel(pixelArray[i].posX, pixelArray[i].posY, this, "Air");
@@ -1110,7 +1115,7 @@ public class MyPanel extends JPanel {
 			g2D.drawString("> Esc: close game", width / 10, height * 22 / 40);
 			g2D.drawString("> C: toggle Copy-Mode", width / 10, height * 24 / 40);
 			g2D.drawString("        + left mousebutton: set upper left corner", width / 10, height * 26 / 40);
-			g2D.drawString("        + Rechte Maustaste: set lower right corner", width / 10, height * 28 / 40);
+			g2D.drawString("        + right mousebutton: set lower right corner", width / 10, height * 28 / 40);
 			g2D.drawString("> X: deletes pixels", width / 10, height * 30 / 40);
 			g2D.drawString("> V: paste", width / 10, height * 32 / 40);
 			g2D.drawString("> M: mute sounds", width / 10, height * 34 / 40);
@@ -1121,10 +1126,10 @@ public class MyPanel extends JPanel {
 			g2D.drawString("> R: random", width - width * 2 / 5, height * 22 / 40);
 			g2D.drawString("> I: info about pixel", width - width * 2 / 5, height * 24 / 40);
 			g2D.drawString("> S: settings", width - width * 2 / 5, height * 26 / 40);
-			g2D.drawString("> Z: Undo  (max " + Integer.toString(maxHistorySize - 1) + " steps)", width - width * 2 / 5,
+			g2D.drawString("> Z: undo  (max " + Integer.toString(maxHistorySize - 1) + " steps)", width - width * 2 / 5,
 					height * 28 / 40);
-			g2D.drawString("> Y: Redo", width - width * 2 / 5, height * 30 / 40);
-//			g2D.drawString("> ", width - width * 2 / 5, height * 32 / 40);
+			g2D.drawString("> Y: redo", width - width * 2 / 5, height * 30 / 40);
+			g2D.drawString("> B: toggle Replace-mode", width - width * 2 / 5, height * 32 / 40);
 //			g2D.drawString("> ", width - width * 2 / 5, height * 34 / 40);
 //			g2D.drawString("> ", width - width * 2 / 5, height * 36 / 40);
 //			g2D.drawString("> ", width - width * 2 / 5, height * 38 / 40);
@@ -1483,6 +1488,8 @@ public class MyPanel extends JPanel {
 			g2D.setColor(Color.white);
 			if (ausgewaehlterPixel.name == "Gravitychanger") {
 				g2D.drawString("G-Changer", width - 360, 55);
+			} else if (ausgewaehlterPixel.name == "Transmitter") {
+				g2D.drawString("Transmit.", width - 360, 55);
 			} else {
 				g2D.drawString(ausgewaehlterPixel.name, width - 130 - 25 * ausgewaehlterPixel.name.length(), 55);
 			}
