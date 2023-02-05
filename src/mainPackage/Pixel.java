@@ -1118,9 +1118,9 @@ public class Pixel {
 
 			if (name == "Oil" && panel.zufall(0.02f)) {
 				if (panel.zufall(70)) {
-					panel.playSound("Öl1.wav", index);
+					panel.playSound("Oil1.wav", index);
 				} else {
-					panel.playSound("Öl2.wav", index);
+					panel.playSound("Oil2.wav", index);
 				}
 			} else
 
@@ -1553,7 +1553,7 @@ public class Pixel {
 					panel.nextPixelArray[index].lifecount--;
 					panel.pixelArray[index].lifecount--;
 
-					// löscht brennenden pixel
+					// loescht brennenden pixel
 //					if (panel.zufall(20)) {
 //						panel.nextPixelArray[index].onFire = false;
 //						panel.pixelArray[index].onFire = false;
@@ -1810,7 +1810,7 @@ public class Pixel {
 				int maxCanFallHeight = 5;
 
 				if (pixelUnterIndex > -1) {
-					if (panel.nextPixelArray[pixelUnterIndex].density < 11) {// dichte <= flüssig
+					if (panel.nextPixelArray[pixelUnterIndex].density < 11) {// dichte <= fluessig
 						if (panel.nextPixelArray[pixelUnterIndex].name == "Air") {
 							fallDamage++;
 						} else {// fall in zB water/lava

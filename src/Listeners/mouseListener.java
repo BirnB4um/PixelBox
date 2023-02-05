@@ -373,7 +373,7 @@ public class mouseListener implements MouseListener {
 
 				}
 
-			} else // ausgewählter Pixel
+			} else // ausgewaehlter Pixel
 			if (panel.auswahlPixelBox.mouseOverPixel(panel.mouseX, panel.mouseY)) {
 				panel.setToAuswahlMenu();
 			} else

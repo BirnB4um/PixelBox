@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 public class MyPanel extends JPanel {
 	// info/credits
 	private final String version = "1.2";
-	private final String author = "Thimo Thorandt";
 	private final String programmer = "Thimo Thorandt";
 	private final String graphicDesigner = "Thimo Thorandt";
 	private final String soundArtist = "Joe der krasse";
@@ -327,7 +326,6 @@ public class MyPanel extends JPanel {
 
 		System.out.println();
 		System.out.println("Version: " + version);
-		System.out.println("Author: " + author);
 		System.out.println("Programmer: " + programmer);
 		System.out.println("Graphic designer: " + graphicDesigner);
 		System.out.println("Sound artist: " + soundArtist);
@@ -349,7 +347,7 @@ public class MyPanel extends JPanel {
 		// check if liste stimmt
 //		if (listOfAllItems.length != liquidItems.length + gasItems.length + solidItems.length + technicItems.length
 //				+ animalList.length)
-//			System.out.println("länge der liste stimmt nicht");
+//			System.out.println("laenge der liste stimmt nicht");
 
 //		// hide cursor
 //		// Transparent 16 x 16 pixel cursor image.
@@ -1477,7 +1475,7 @@ public class MyPanel extends JPanel {
 //				mainSprite.drawPartOfSprite(g2D, 25, 25, 45, 45, 0);
 			}
 
-			// draw ausgewählter pixel in ecke (top right)
+			// draw ausgewaehlter pixel in ecke (top right)
 			ausgewaehlterPixel.draw(g2D);// g2D, width - 84, 16, 58, 58
 
 			g2D.setStroke(new BasicStroke(2));
@@ -1566,7 +1564,7 @@ public class MyPanel extends JPanel {
 				g2D.drawString("Copy-Mode", 540, 70);
 			}
 
-		} else if (auswahlMenu) { // draw auswahlmenü
+		} else if (auswahlMenu) { // draw auswahlmenu
 			super.setBackground(new Color(15, 15, 35));
 
 			g2D.setColor(new Color(10, 10, 20));
@@ -1635,7 +1633,7 @@ public class MyPanel extends JPanel {
 			fps = 1000 / constrain(System.currentTimeMillis() - startFrameTime, 1, 100000);
 			fpsUpdateTimeNow = System.currentTimeMillis();
 
-			String str = "drücke H für Hilfe";
+			String str = "druecke H fuer Hilfe";
 
 			jf.setTitle("PixelBox!  " + Integer.valueOf(pixelArray.length) + "pixel   " + String.valueOf(fps)
 					+ " fps   " + str);
